@@ -1,0 +1,5 @@
+theme: jekyll-theme-cayman
+title: SenseCAP MX OpenApi
+show_downloads: false
+github:
+  is_project_page: false
