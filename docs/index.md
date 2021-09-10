@@ -152,8 +152,8 @@ In this document we’re gonna show you how to make your HTTP API call to SenseC
         "blockStatus": 1,
         "relay": false,
         "labels": [],
-        "sn": "110991321213002033",
-        "address": "112kS4A6sg1CTHU7gHyK1nBVhWVUMj2mSN11uARCEcREAd3WSj74",
+        "sn": "1109913212xxxxxxx",
+        "address": "112kS4A6sg1CTHU7gHyK1nBVhWVUMj2mSN11uARCxxxxxxxx",
         "batch": null,
         "collectTime": 1631181103754,
         "cpuId": "100000002be60194",
@@ -162,7 +162,7 @@ In this document we’re gonna show you how to make your HTTP API call to SenseC
         "memoryTotal": 1900.79,
         "memoryUsed": 690.07,
         "name": "Fantastic Pecan Robin",
-        "onboardingKey": "112kS4A6sg1CTHU7gHyK1nBVhWVUMj2mSN11uARCEcREAd3WSj74",
+        "onboardingKey": "112kS4A6sg1CTHU7gHyK1nBVhWVUMj2mSN11uARCxxxxxxxx",
         "producedAt": 1625707693512,
         "region": "US915",
         "sdTotal": 58776.86,
@@ -173,7 +173,7 @@ In this document we’re gonna show you how to make your HTTP API call to SenseC
         "wifiSsid": "",
         "addToHeliumAt": 1624003515000,
         "gain": 1.2,
-        "owner": "133jU7Z49hcLZARp1CZpCBa1ZC234zoa3SKDMG52uv9H6wPMgLB",
+        "owner": "xxxxxxxxxxxxxxxxxxxxxxxxxx",
         "geocode": {
             "short_street": "Irish-American Dam Rd",
             "short_state": "NV",
@@ -200,63 +200,6 @@ In this document we’re gonna show you how to make your HTTP API call to SenseC
 ```
 curl --request GET \
      --url https://status.sensecapmx.cloud/api/openapi/device/view_device?sn=<your device sn>&api_key=<your apiKey>
-```
-
-## Device list
-**Get the list of all devices**
-
-- path: {host}/api/openapi/device/list_device
-- method: GET
-- params:
-    - api_key: apikey of your account
-- rate limit: Up to 2 times in 1 minutes
-- response
-```
-{
-    "code": 0,
-    "msg": "",
-    "data": {
-        "page": {
-            "count": 4
-        },
-        "list": [
-            {
-                "name": "Bumpy Lead Woodpecker",
-                "sn": "110991585100000034",
-                "cpuId": "100000006311af29",
-                "batch": "20210707",
-                "producedAt": 1625644529632,
-                "addToHeliumAt": 1624007162000,
-                "collectTime": 1631069266022,
-                "version": {
-                    "firmware": "2021.09.03.0"
-                },
-                "dialable": 1,
-                "connected": 1,
-                "relayed": 1,
-                "gain": 1.2,
-                "p2pAddress": [
-                    "/p2p/11owsJ953YdSYCk7QqZcNepj93pgYKASp9AEhiVEqfaPBTYB8hj/p2p-circuit/p2p/112kUKYejYV9MssUxy2mXErMFT55xMcenaJ834oH3Umhk7caUBBm"
-                ],
-                "totalHeight": "0",
-                "height": 1001599,
-                "isHealth": 2,
-                "natType": 2,
-                "deviceOnline": false,
-                "synced": true,
-                "labels": [],
-                "address": "112kUKYejYV9MssUxy21XErMFT55xMcenaJ834oH3Umhk7caUBBm",
-                "owner": "133jU7Z49hcLZARp7CZpCBa1ZC214zoa3SKDMG52uv9H6wPMgLB"
-            },
-            ...
-        ]
-    }
-}
-```
-- example request
-```
-curl --request GET \
-     --url https://status.sensecapmx.cloud/api/openapi/device/list_device?api_key=<your apiKey>
 ```
 
 ## Error Code
