@@ -1,28 +1,30 @@
 ## Summary
-In this document we’re gonna show you how to make your HTTP API call to SenseCAP MX HTTP API.
+In this document we’re gonna show you how to make your HTTP API call to SenseCAP Hotspot Dashboard.
 
 ## HTTP HOST
 - https://status.sensecapmx.cloud
 
-## Device Detail
-**Get the detail of devices**
+## HTTP API Detail
 
-- path: {host}/api/openapi/device/view_device
-- method: GET
-- params:
-    - api_key: apikey of your account
-    - sn: device sn
-- rate limit: Up to 50 times in 5 minutes
-- response
+**View Device Detail**
+
+- Path: /api/openapi/device/view_device.
+- Method: GET
+- Parameters:
+    - `api_key`: Apikey for your account.
+    - `sn`: device sn.
+- Access Control Quota: Up to 50 times per 5 minutes.
+- Response
+
 ```
 {
     "code": 0,
     "msg": "",
     "data": {
-        "height": 1003444,
-        "connected": 1,
-        "dialable": 1,
-        "natType": 2,
+        "height": 1003444, // Block height of device
+        "connected": 1,   // P2P Outbound Status. -1 unknown, 0：unhealthy, 1：healthy
+        "dialable": 1,   //  P2P Inbound Status. -1：unknown, 0：unhealthy, 1：healthy
+        "natType": 2,   //   -1：unknown, 0：none, 1：static, 2：symmetric, 3：restricted
         "ipPublic": [
             "113.110.229.80"
         ],
@@ -32,133 +34,35 @@ In this document we’re gonna show you how to make your HTTP API call to SenseC
         "ipWifiLocal": [
             "0.0.0.0"
         ],
-        "syncList": [
+        "syncList": [   //  History of block sync.
             {
-                "height": 1003424,
-                "total": 1003427,
+                "height": 1003444, 
+                "total": 1003457,
                 "time": 1631180053960
             },
-            {
-                "height": 1003419,
-                "total": 1003422,
-                "time": 1631179746009
-            },
-            {
-                "height": 1003416,
-                "total": 1003416,
-                "time": 1631179440140
-            },
-            {
-                "height": 1003408,
-                "total": 1003409,
-                "time": 1631179128392
-            },
-            {
-                "height": 1003393,
-                "total": 1003399,
-                "time": 1631178100688
-            },
-            {
-                "height": 1003387,
-                "total": 1003393,
-                "time": 1631177794943
-            },
-            {
-                "height": 1003384,
-                "total": 1003387,
-                "time": 1631177452093
-            },
-            {
-                "height": 1003376,
-                "total": 1003382,
-                "time": 1631177145336
-            },
-            {
-                "height": 1003376,
-                "total": 1003377,
-                "time": 1631176839656
-            },
-            {
-                "height": 1003372,
-                "total": 1003372,
-                "time": 1631176533018
-            }
+            ...(up to 10 rows.)
         ],
         "p2pAddress": [
             "/p2p/11LmGup58X4UXTajwmsYZhuXVcNYvnBCf4UGM3jx282iMotBR7j/p2p-circuit/p2p/112kS4A6sgZCTHU7gHyK1nBVhWVUMj2mSN11uARCEcREAd3WSj74"
         ],
-        "fan_status_list": [
+        "fan_status_list": [   //  History of fan status.
             {
-                "fan": 1,
-                "force": 0,
-                "temperature": 72,
+                "fan": 1,  // Fan status: 0-opened,1-closed.
+                "temperature": 52, 
                 "time": 1631181015278
             },
-            {
-                "fan": 1,
-                "force": 0,
-                "temperature": 71,
-                "time": 1631180925273
-            },
-            {
-                "fan": 1,
-                "force": 0,
-                "temperature": 70,
-                "time": 1631180835269
-            },
-            {
-                "fan": 1,
-                "force": 0,
-                "temperature": 72,
-                "time": 1631180805267
-            },
-            {
-                "fan": 1,
-                "force": 0,
-                "temperature": 70,
-                "time": 1631180775265
-            },
-            {
-                "fan": 1,
-                "force": 0,
-                "temperature": 72,
-                "time": 1631180745263
-            },
-            {
-                "fan": 1,
-                "force": 0,
-                "temperature": 72,
-                "time": 1631180715262
-            },
-            {
-                "fan": 1,
-                "force": 0,
-                "temperature": 70,
-                "time": 1631180655259
-            },
-            {
-                "fan": 1,
-                "force": 0,
-                "temperature": 71,
-                "time": 1631180625257
-            },
-            {
-                "fan": 1,
-                "force": 0,
-                "temperature": 71,
-                "time": 1631180595256
-            }
+            ,
+            ...(up to 5 rows.)
         ],
-        "blockStatus": 1,
         "relay": false,
         "labels": [],
         "sn": "1109913212xxxxxxx",
         "address": "112kS4A6sg1CTHU7gHyK1nBVhWVUMj2mSN11uARCxxxxxxxx",
         "batch": null,
-        "collectTime": 1631181103754,
+        "collectTime": 1631181103754, // Collect time of data.
         "cpuId": "100000002be60194",
         "cpuTemperature": 67,
-        "cpuUsed": 37.6,
+        "cpuUsed": 37.6, // Percent of cpu used.
         "memoryTotal": 1900.79,
         "memoryUsed": 690.07,
         "name": "Fantastic Pecan Robin",
@@ -172,7 +76,7 @@ In this document we’re gonna show you how to make your HTTP API call to SenseC
         },
         "wifiSsid": "",
         "addToHeliumAt": 1624003515000,
-        "gain": 1.2,
+        "gain": 1.2, // Gain of antenna.
         "owner": "xxxxxxxxxxxxxxxxxxxxxxxxxx",
         "geocode": {
             "short_street": "Irish-American Dam Rd",
@@ -188,26 +92,28 @@ In this document we’re gonna show you how to make your HTTP API call to SenseC
         "heliumOnline": true,
         "lat": 40.21757423872224,
         "lng": -118.42763826806683,
-        "totalHeight": 1003445,
+        "totalHeight": 1003445, // Block height of helium.
         "synced": true,
         "online": true,
-        "isHealth": 2,
-        "relayed": 1
+        "isHealth": 2, //  1：yes, 2：no,
+        "relayed": 1  //  1：yes, 2：no,
     }
 }
 ```
+
 - example request
+
 ```
 curl --request GET \
      --url https://status.sensecapmx.cloud/api/openapi/device/view_device?sn=<your device sn>&api_key=<your apiKey>
 ```
 
-## Error Code
+**Error Code**
 
-code| msg | description
----|---|---
-10000 | Framework analysis error | Service error
-11100 | Invalid token | The apikey is Error
-11200 | Request parameters are invalid | Request parameters are invalid
-11203 | device no exists | this device is no exists
-11207 | rate limit | The api is called too frequently
+| code | msg | description |
+| :---: | :--- | :--- |
+| 10000 | Framework analysis error | Service error. |
+| 11100 | Invalid token | The apikey is Error. |
+| 11200 | Request parameters are invalid | Request parameters are invalid. |
+| 11203 | device no exists | This device is no exists. |
+| 11207 | rate limit | The api is called too frequently. |
