@@ -59,7 +59,7 @@ In this document we’re gonna show you how to make your HTTP API call to SenseC
         "sn": "1109913212xxxxxxx",
         "address": "112kS4A6sg1CTHU7gHyK1nBVhWVUMj2mSN11uARCxxxxxxxx",
         "batch": null,
-        "collectTime": 1631181103754, // Collect time of data.
+        "collectTime": 1631181103754, // Collection time of data.
         "cpuId": "100000002be60194",
         "cpuTemperature": 67,
         "cpuUsed": 37.6, // Percent of cpu used.
